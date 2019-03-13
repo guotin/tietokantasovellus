@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('books_create') }}">
+  Book title:<br>
+  <input type="text" name="name"><br>
+  Author's name:<br>
+  <input type="text" name="author"><br>
+  Book's publication year:<br>
+  <input type="text" name="publication_year"><br>
+  <input type="submit" value="Add a new book"/>
+</form>
+{% endblock %}

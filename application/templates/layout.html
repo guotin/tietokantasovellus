@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kirja-arvostelut</title>
+  </head>
+
+  <body>
+      <ul>
+        <li><a href="{{ url_for('books_index') }}">List books</a></li>
+        <li><a href="{{ url_for('books_form') }}">Add a book</a></li>
+      </ul>
+    {% block body %}
+      <p>
+        Content.
+      </p>
+    {% endblock %}
+  </body>
+</html>

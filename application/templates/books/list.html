@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Book title</th>
+      <th>Book author</th>
+      <th>publication year</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.name }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.publication_year }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('book_set_year', book_id=book.id) }}">
+           <input type="text" name="year">
+           <input type="submit" value="Change publication year"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
