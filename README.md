@@ -1,3 +1,5 @@
+(Jatkossa commit-viestit vain englanniksi. Vahingossa käytetty suomea aluksi.)
+
 # Kirja-arvostelut
 ## Kuvaus aiheesta 
 
