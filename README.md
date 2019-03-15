@@ -18,4 +18,10 @@ Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukem
 
 * Yhteenvetokyselyiden tarkastelu (parhaat tai luetuimmat kirjat)
 
-# Käyttöohje 
+## Linkkejä
+
+[Heroku](https://enigmatic-lake-26343.herokuapp.com/)
+
+[Tietokantakaavio](https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_chart.png)
+
+[Käyttäjätarinat](https://github.com/guotin/tietokantasovellus/blob/master/documentation/user_stories.md)
