@@ -2,12 +2,57 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('books_create') }}">
-  Book title:<br>
-  <input type="text" name="name"><br>
-  Author's name:<br>
-  <input type="text" name="author"><br>
-  Book's publication year:<br>
-  <input type="text" name="publication_year"><br>
-  <input type="submit" value="Add a new book"/>
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name}}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.author.label }}
+      </td>
+      <td>
+        {{ form.author }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.author.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.publication_year.label }}
+      </td>
+      <td>
+        {{ form.publication_year}}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.publication_year.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Add a new book"/>
+      </td>
+    </tr>
+  </table>
 </form>
 {% endblock %}

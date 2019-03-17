@@ -5,7 +5,7 @@
     <tr>
       <th>Book title</th>
       <th>Book author</th>
-      <th>publication year</th>
+      <th>Publication year</th>
     </tr>
     {% for book in books %}
     <tr>
@@ -13,10 +13,17 @@
       <td>{{ book.author }}</td>
       <td>{{ book.publication_year }}</td>
       <td>
-        <form method="POST" action="{{ url_for('book_set_year', book_id=book.id) }}">
-           <input type="text" name="year">
-           <input type="submit" value="Change publication year"/>
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
+          <input type="submit" name="delete" value="Delete book"/>
+          <input type="text" name="name">
+          <input type="submit" name="update_name" value="Update title"/>
+          <input type="text" name="author">
+          <input type="submit" name="update_author" value="Update author"/>
+          <input type="number" name="publication_year">
+          <input type="submit" name="update_publication_year" value="Update publication year"/>
         </form>
+        {% endif %}  
       </td>
     </tr>
     {% endfor %}
