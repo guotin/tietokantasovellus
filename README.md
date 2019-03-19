@@ -18,6 +18,10 @@ Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukem
 
 * Yhteenvetokyselyiden tarkastelu (parhaat tai luetuimmat kirjat)
 
+## Käyttöohjeet
+
+Siirry Heroku-linkistä sovellukseen. Luo käyttäjä rekisteröitymällä. Voit nyt lisätä kirjoja ja muokata olemassaolevien kirjojen tietoja.
+
 ## Linkkejä
 
 [Heroku](https://enigmatic-lake-26343.herokuapp.com/)
