@@ -7,6 +7,7 @@ class Book(db.Model):
     name = db.Column(db.String(144), nullable=False)
     author = db.Column(db.String(144), nullable=False)
     publication_year = db.Column(db.Integer, nullable=False)
+    
     users = db.relationship("UserBook", cascade="all, delete-orphan")
     reviews = db.relationship("Review", backref="book", lazy=True)
 

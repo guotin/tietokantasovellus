@@ -17,6 +17,7 @@
         <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
           <input type="submit" name="delete" value="Delete book"/>
           <input type="submit" name="update" value="Update data"/>
+          <input type="submit" name="review" value="Give a review"/>
         </form>
         {% endif %}  
       </td>

@@ -24,6 +24,8 @@ def books_contact(book_id):
         return books_delete(book_id)
     elif "update" in request.form:
         return books_update(book_id)
+    elif "review" in request.form:
+        return reviews_create(book_id)
     else:
         return redirect(url_for("books_index"))
 
@@ -37,7 +39,7 @@ def books_update(book_id):
     if form.validate_on_submit():
         form.populate_obj(book)
         db.session().commit()
-        
+                
     return render_template("books/update.html", book=book, form=form)
   
 @app.route("/books/<book_id>/", methods=["POST"])
@@ -74,3 +76,35 @@ def books_create():
     db.session().commit()
     
     return redirect(url_for("books_index"))
+
+@app.route("/reviews/<book_id>", methods=["POST"])
+@login_required
+def reviews_create(book_id):
+
+    form = ReviewForm(request.form)
+    book = Book.query.get(book_id)
+  
+    if not form.validate():
+        return render_template("reviews/new.html", form = form, book=book)
+    
+    review = Review(form.grade.data, form.text.data)
+    review.book_id = book_id
+    review.user_id = current_user.id
+    db.session().add(review)
+    db.session().commit()
+
+    return redirect(url_for("books_index"))
+                        
+
+    
+            
+
+
+
+
+
+
+
+
+
+    

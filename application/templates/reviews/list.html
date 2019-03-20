@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Review grade</th>
+      <th>Review comments</th>
+    </tr>
+    {% for review in reviews %}
+    <tr>
+      <td>{{ review.grade }}</td>
+      <td>{{ review.text }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

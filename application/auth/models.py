@@ -1,6 +1,7 @@
 from application import db
 from application.books.models import Book
 
+
 class UserBook(db.Model):
     __table_args__ = (db.PrimaryKeyConstraint('user_id', 'book_id'),)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -19,6 +20,7 @@ class User(db.Model):
     password = db.Column(db.String(144), nullable=False)
 
     books = db.relationship("UserBook", backref='book', lazy=True)
+    reviews = db.relationship("Review", backref='review', lazy=True)
 
     def __init__(self, username, password):
 

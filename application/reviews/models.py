@@ -8,6 +8,7 @@ class Review(db.Model):
     text = db.Column(db.String(500), nullable=False)
 
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __init__(self, grade, text):
         self.grade = grade
