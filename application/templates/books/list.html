@@ -16,12 +16,7 @@
         {% if current_user.is_authenticated %}
         <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
           <input type="submit" name="delete" value="Delete book"/>
-          <input type="text" name="name">
-          <input type="submit" name="update_name" value="Update title"/>
-          <input type="text" name="author">
-          <input type="submit" name="update_author" value="Update author"/>
-          <input type="number" name="publication_year">
-          <input type="submit" name="update_publication_year" value="Update publication year"/>
+          <input type="submit" name="update" value="Update data"/>
         </form>
         {% endif %}  
       </td>

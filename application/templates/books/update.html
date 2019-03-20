@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('books_update', book_id=book.id) }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name}}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.author.label }}
+      </td>
+      <td>
+        {{ form.author }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.author.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.publication_year.label }}
+      </td>
+      <td>
+        {{ form.publication_year}}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.publication_year.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Update data"/>
+        <a>(Go back to the list to see the results after updating)</a>
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

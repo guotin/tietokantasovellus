@@ -1,10 +1,12 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-
 from application import app, db
+
 from application.books.models import Book
 from application.books.forms import BookForm, UpdateForm
 from application.auth.models import UserBook
+from application.reviews.models import Review
+from application.reviews.forms import ReviewForm
 
 @app.route("/books", methods=["GET"])
 def books_index():
@@ -20,57 +22,34 @@ def books_form():
 def books_contact(book_id):
     if "delete" in request.form:
         return books_delete(book_id)
-    elif "update_name" in request.form:
-        return books_set_name(book_id)
-    elif "update_author" in request.form:
-        return books_set_author(book_id)
-    elif "update_publication_year" in request.form:
-        return books_set_publication_year(book_id)
+    elif "update" in request.form:
+        return books_update(book_id)
     else:
         return redirect(url_for("books_index"))
-    
+
+@app.route("/books/update/<book_id>/", methods=["GET", "POST"])
+@login_required
+def books_update(book_id):
+
+    book = Book.query.get(book_id)
+    form = UpdateForm(obj=book)
+
+    if form.validate_on_submit():
+        form.populate_obj(book)
+        db.session().commit()
+        
+    return render_template("books/update.html", book=book, form=form)
+  
 @app.route("/books/<book_id>/", methods=["POST"])
 @login_required
 def books_delete(book_id):
     
     book = Book.query.get(book_id)
-    userbook_delete = UserBook.__table__.delete().where(UserBook.book_id == book_id)
-    db.session.execute(userbook_delete)
     db.session.delete(book)
     db.session().commit()
 
     return redirect(url_for("books_index"))
 
-
-@app.route("/books/<book_id>/", methods=["POST"])
-@login_required
-def books_set_name(book_id):
-
-    book = Book.query.get(book_id)
-    book.name = request.form['name']
-    db.session().commit()
-
-    return redirect(url_for("books_index"))
-
-@app.route("/books/<book_id>/", methods=["POST"])
-@login_required
-def books_set_author(book_id):
-
-    book = Book.query.get(book_id)
-    book.author = request.form['author']
-    db.session().commit()
-
-    return redirect(url_for("books_index"))
-
-@app.route("/books/<book_id>/", methods=["POST"])
-@login_required
-def books_set_publication_year(book_id):
-
-    book = Book.query.get(book_id)
-    book.publication_year = request.form['publication_year']
-    db.session().commit()
-
-    return redirect(url_for("books_index"))
     
 @app.route("/books/", methods=["POST"])
 @login_required
@@ -94,4 +73,4 @@ def books_create():
     db.session().add(bookuser)
     db.session().commit()
     
-    return redirect(url_for("books_index"))                       
+    return redirect(url_for("books_index"))
