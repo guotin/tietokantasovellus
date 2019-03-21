@@ -9,7 +9,7 @@ class Book(db.Model):
     publication_year = db.Column(db.Integer, nullable=False)
     
     users = db.relationship("UserBook", cascade="all, delete-orphan")
-    reviews = db.relationship("Review", backref="book", lazy=True)
+    reviews = db.relationship("Review", backref="book", lazy=True, cascade="all, delete-orphan")
 
     def __init__(self, name, author, publication_year):
         self.name = name

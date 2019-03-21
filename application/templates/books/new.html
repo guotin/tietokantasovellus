@@ -1,58 +1,43 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<h1>Add a new book</h1>
 <form method="POST" action="{{ url_for('books_create') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name}}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.name.errors %}
+  <div class="form-group">
+    {{ form.name.label }}
+    {{ form.name(class="form-control") }}
+    <td>
+      <ul>
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+  </div>
+  <div class="form-group">
+    {{ form.author.label }} 
+    {{ form.author(class="form-control") }}
+    <td>
+      <ul>
+        {% for error in form.author.errors %}
           <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.author.label }}
-      </td>
-      <td>
-        {{ form.author }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.author.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.publication_year.label }}
-      </td>
-      <td>
-        {{ form.publication_year}}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.publication_year.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Add a new book"/>
-      </td>
-    </tr>
-  </table>
+        {% endfor %}
+      </ul>
+    </td> 
+  </div>
+  <div class="form-group">
+    {{ form.publication_year.label }}
+    {{ form.publication_year(class="form-control") }}
+    <td>
+      <ul>
+        {% for error in form.publication_year.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+  </div>
+  <div>
+    <input type="submit" class="btn btn-dark my-2 my-sm-0" value="Add a new book"/>
+  </div>
 </form>
 {% endblock %}

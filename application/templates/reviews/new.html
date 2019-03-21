@@ -1,15 +1,12 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<h1>Give a book review</h1>
+
 <form method="POST" action="{{ url_for('reviews_create', book_id=book.id) }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.grade.label }}
-      </td>
-      <td>
-        {{ form.grade}}
-      </td>
+  <div class="form-group">
+      {{ form.grade.label }}
+      {{ form.grade(class="form-control")}}
       <td>
         <ul>
           {% for error in form.grade.errors %}
@@ -17,14 +14,10 @@
           {% endfor %}
         </ul>
       </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.text.label }}
-      </td>
-      <td>
-        {{ form.text }}
-      </td>
+  </div>
+  <div class="form-group">
+      {{ form.text.label }}
+      {{ form.text(class="form-control", rows="4") }}
       <td>
         <ul>
           {% for error in form.text.errors %}
@@ -32,11 +25,10 @@
           {% endfor %}
         </ul>
       </td>
-    </tr>
-      <td colspan="2">
-        <input type="submit" value="Add a new review"/>
-      </td>
-    </tr>
-  </table>
+  </div>
+  <div>
+    <input type="submit" class="btn btn-dark my-2 my-sm-0" value="Post review"/>
+    <a class="btn btn-dark my-2 my-sm-0" href="/books">Cancel</a>
+  </div>
 </form>
 {% endblock %}

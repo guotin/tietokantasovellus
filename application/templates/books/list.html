@@ -1,27 +1,30 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
-    <tr>
-      <th>Book title</th>
-      <th>Book author</th>
-      <th>Publication year</th>
-    </tr>
-    {% for book in books %}
-    <tr>
-      <td>{{ book.name }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.publication_year }}</td>
-      <td>
-        {% if current_user.is_authenticated %}
-        <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
-          <input type="submit" name="delete" value="Delete book"/>
-          <input type="submit" name="update" value="Update data"/>
-          <input type="submit" name="review" value="Give a review"/>
-        </form>
-        {% endif %}  
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+<h1>All books</h1>
+{% for book in books %}
+<div class="card mb-3 card-block">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ book.name}}
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      Author: {{ book.author }}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Published: {{ book.publication_year}}
+    </h6>
+    <td>
+      {% if current_user.is_authenticated %}
+      <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
+        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="delete" value="Delete book"/>
+        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="update" value="Update data"/>
+        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="review" value="Give a review"/>
+      </form>
+      {% endif %} 
+    </td>
+  </div>
+</div>
+{% endfor %}
+
 {% endblock %}
