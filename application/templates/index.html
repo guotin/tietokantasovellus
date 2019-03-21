@@ -1,18 +1,18 @@
 
 {% extends "layout.html" %} {% block body %} {% if current_user.is_authenticated
   %}
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4">
+      <h1>
         Welcome, {{ current_user.username }}!
       </h1>
       <p>You can now add books and give reviews!</p>
     </div>
   </div>
   {% else %}
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4">
+      <h1>
           Welcome!
       </h1>
       <p>You can now view books that users have added to the list</p>
