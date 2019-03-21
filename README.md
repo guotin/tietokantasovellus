@@ -21,6 +21,7 @@ Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukem
 ## Käyttöohjeet
 
 Siirry Heroku-linkistä sovellukseen. Luo käyttäjä rekisteröitymällä. Voit nyt lisätä kirjoja ja muokata olemassaolevien kirjojen tietoja.
+Voit myös käyttää kirjautumiseen testitunnuksia: username: test, password: test.
 
 ## Linkkejä
 
