@@ -26,6 +26,8 @@ def books_contact(book_id):
         return books_update(book_id)
     elif "review" in request.form:
         return reviews_create(book_id)
+    elif "list" in request.form:
+        return reviews_list(book_id)
     else:
         return redirect(url_for("books_index"))
 
@@ -94,17 +96,13 @@ def reviews_create(book_id):
     db.session().commit()
 
     return redirect(url_for("books_index"))
-                        
 
+@app.route("/reviews", methods=["GET"])
+@login_required
+def reviews_list(book_id):
+    bookToShow = Book.query.get(book_id)
+    booksReviews = Review.query.filter_by(book_id=book_id).all()
+    return render_template("reviews/list.html", reviews = booksReviews, book=bookToShow)
     
-            
-
-
-
-
-
-
-
-
-
     
+                
