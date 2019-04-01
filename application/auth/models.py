@@ -4,24 +4,24 @@ from application.books.models import Book
 from sqlalchemy.sql import text
 
 
-class UserBook(db.Model):
-    __table_args__ = (db.PrimaryKeyConstraint('user_id', 'book_id'),)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+class AccountBook(db.Model):
+    __table_args__ = (db.PrimaryKeyConstraint('account_id', 'book_id'),)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
 
-    def __init__(self, user_id, book_id):
-        self.user_id = user_id
+    def __init__(self, account_id, book_id):
+        self.account_id = account_id
         self.book_id = book_id
 
-class User(db.Model):
+class Account(db.Model):
 
-    __tablename__ = "user"
+    __tablename__ = "account"
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
-    books = db.relationship("UserBook", backref='book', lazy=True)
+    books = db.relationship("AccountBook", backref='book', lazy=True)
     reviews = db.relationship("Review", backref='review', lazy=True)
 
     def __init__(self, username, password):
@@ -43,10 +43,10 @@ class User(db.Model):
 
     @staticmethod
     def find_users_with_most_reviews():
-        stmt = text("SELECT User.username, COUNT(Review.id) FROM User"
-                    " JOIN Review ON Review.user_id = User.id"
-                    " WHERE Review.user_id = User.id"
-                    " GROUP BY User.username"
+        stmt = text("SELECT Account.username, COUNT(Review.id) FROM Account"
+                    " JOIN Review ON Review.account_id = Account.id"
+                    " WHERE Review.account_id = Account.id"
+                    " GROUP BY Account.username"
                     " ORDER BY COUNT(Review.id) DESC"
                     " LIMIT 5")
         

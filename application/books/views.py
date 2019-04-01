@@ -4,7 +4,7 @@ from application import app, db
 
 from application.books.models import Book
 from application.books.forms import BookForm, UpdateForm
-from application.auth.models import UserBook
+from application.auth.models import AccountBook
 from application.reviews.models import Review
 from application.reviews.forms import ReviewForm
 
@@ -72,7 +72,7 @@ def books_create():
     db.session().commit()
     
     #Add an entry to table "UserBook" with current user id and the new book id
-    bookuser = UserBook(current_user.id, book.id)
+    bookuser = AccountBook(current_user.id, book.id)
     db.session().add(bookuser)
     db.session().commit()
     
@@ -90,7 +90,7 @@ def reviews_create(book_id):
     
     review = Review(form.grade.data, form.text.data)
     review.book_id = book_id
-    review.user_id = current_user.id
+    review.account_id = current_user.id
     db.session().add(review)
     db.session().commit()
 
