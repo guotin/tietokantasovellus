@@ -15,14 +15,12 @@
       Published: {{ book.publication_year}}
     </h6>
     <td>
-      {% if current_user.is_authenticated %}
       <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
         <input type="submit" class="btn btn-dark my-2 my-sm-0" name="delete" value="Delete book"/>
         <input type="submit" class="btn btn-dark my-2 my-sm-0" name="update" value="Update data"/>
         <input type="submit" class="btn btn-dark my-2 my-sm-0" name="review" value="Give a review"/>
         <input type="submit" class="btn btn-dark my-2 my-sm-0" name="list" value="List reviews"/>
-      </form>
-      {% endif %} 
+      </form> 
     </td>
   </div>
 </div>

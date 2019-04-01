@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Top 5 reviewers</h1>
+{% for user in users %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ user.username}}
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      Reviews given: {{ user.reviews }}
+    </h6>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

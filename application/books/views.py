@@ -18,7 +18,6 @@ def books_form():
     return render_template("books/new.html", form = BookForm())
 
 @app.route("/books/<book_id>/", methods=["GET", "POST"])
-@login_required
 def books_contact(book_id):
     if "delete" in request.form:
         return books_delete(book_id)
@@ -98,7 +97,6 @@ def reviews_create(book_id):
     return redirect(url_for("books_index"))
 
 @app.route("/reviews", methods=["GET"])
-@login_required
 def reviews_list(book_id):
     bookToShow = Book.query.get(book_id)
     booksReviews = Review.query.filter_by(book_id=book_id).all()

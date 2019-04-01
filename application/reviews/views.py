@@ -5,7 +5,5 @@ from application import app, db
 from application.reviews.models import Review
 from application.reviews.forms import ReviewForm
 
-@app.route("/reviews", methods=["GET"])
-def reviews_index():
-    return render_template("reviews/list.html", books = Book.query.all())
+
 

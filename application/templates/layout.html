@@ -21,6 +21,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('books_form') }} ">Add a book</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth_index') }} ">Top 5 reviewers</a>
+            </li>
           </ul> 
           <ul class="navbar-nav mr-sm-2">
             {% if current_user.is_authenticated %}

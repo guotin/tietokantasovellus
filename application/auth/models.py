@@ -1,6 +1,8 @@
 from application import db
 from application.books.models import Book
 
+from sqlalchemy.sql import text
+
 
 class UserBook(db.Model):
     __table_args__ = (db.PrimaryKeyConstraint('user_id', 'book_id'),)
@@ -38,3 +40,19 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def find_users_with_most_reviews():
+        stmt = text("SELECT User.username, COUNT(Review.id) FROM User"
+                    " JOIN Review ON Review.user_id = User.id"
+                    " WHERE Review.user_id = User.id"
+                    " GROUP BY User.username"
+                    " ORDER BY COUNT(Review.id) DESC"
+                    " LIMIT 5")
+        
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"username":row[0], "reviews":row[1]})
+
+        return response

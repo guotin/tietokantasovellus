@@ -44,8 +44,13 @@ def auth_register():
     db.session().add(newUser)
     db.session.commit()
 
+    login_user(newUser)
+
     return redirect(url_for("index"))
 
+@app.route("/auth", methods=["GET"])
+def auth_index():
+    return render_template("auth/list.html", users=User.find_users_with_most_reviews())
 
     
 
