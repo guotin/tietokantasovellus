@@ -1,4 +1,3 @@
-(Jatkossa commit-viestit vain englanniksi.)
 
 # Kirja-arvostelut
 ## Kuvaus aiheesta 
@@ -18,10 +17,43 @@ Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukem
 
 * Yhteenvetokyselyiden tarkastelu (parhaat tai luetuimmat kirjat)
 
-## Käyttöohjeet
+## Asennus omalle tietokoneelle
 
-Siirry Heroku-linkistä sovellukseen. Luo käyttäjä rekisteröitymällä. Voit nyt lisätä kirjoja ja muokata olemassaolevien kirjojen tietoja.
-Voit myös käyttää kirjautumiseen testitunnuksia: username: test, password: test.
+Asennusohjeissa oletetaan, että käytössä on Linux-käyttöjärjestelmä ja Python3 (3.5 tai uudempi) sekä SQlite3. Myös Git-ohjelmistosta on hyötyä projektin kloonaamisessa.
+
+* Lataa tämä Git-repositorio koneellesi zip-pakettina tai kloonaa se komennolla 'git clone https://github.com/guotin/tietokantasovellus'
+
+* Navigoi projektin juurikansioon ja luo tarvittava virtuaaliympäristö komennolla 'python3 -m venv venv'
+
+* Käynnistä luomasi virtuaaliympäristö komennolla 'source venv/bin/activate'
+
+* Asenna projektin vaatimat riippuvuudet komennolla 'pip install -r requirements.txt'
+
+* Käynnistä sovellus komennolla 'python run.py'
+
+* Sovellus pyörii nyt selaimessasi osoitteessa 'localhost:5000'
+
+## Käyttöohjeet ja testitunnukset Herokuun
+
+### Heroku testitunnukset:
+
+Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
+
+* username: 'test', password: 'test'
+
+* username: 'admin', password: 'admin'
+
+
+### Sovelluksen käyttöohjeet
+
+* Siirry Heroku-linkistä sovellukseen tai asenna ohjelma omalle tietokoneellesi ohjeiden mukaisesti
+
+* Voit luoda käyttäjän rekisteröitymällä. Lisäksi Heroku-versiossa sinulla on pääsy testitunnuksiin.
+
+* Paikallisessa versiossa joudut luomaan "admin" tunnuksilla varustetun käyttäjän itse avaamalla sovelluksen tietokannan 'books.db' SQlite3:lla ja esimerkiksi syöttämällä komennon 'INSERT INTO account (username, password, admin) values ("admin", "admin", "1");'
+
+* Rekisteröitymisen ja kirjautumisen jälkeen sinulla on pääsy kaikkiin muihin sovelluksen toiminnallisuuksiin 
+
 
 ## Linkkejä
 
