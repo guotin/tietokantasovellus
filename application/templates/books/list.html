@@ -1,12 +1,25 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>All books</h1>
+<h1 class="text-center">Public book list</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Here you can see all the books that users have added to the forum and browse their reviews
+    </h6>
+    <h6 class="text-center">
+      Signed users have further access to update book data and mark the book as read
+    </h6>
+    <h6 class="text-center">
+      A review can be posted from your personal book list after signing in
+    </h6>
+  </div>
+</div>
 {% for book in books %}
 <div class="card mb-3">
   <div class="card-body">
     <h5 class="card-title">
-      {{ book.name}}
+      {{ book.name }}
     </h5>
     <h6 class="card-subtitle mb-2">
       Author: {{ book.author }}
@@ -16,10 +29,14 @@
     </h6>
     <td>
       <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
-        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="delete" value="Delete book"/>
-        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="update" value="Update data"/>
-        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="review" value="Give a review"/>
-        <input type="submit" class="btn btn-dark my-2 my-sm-0" name="list" value="List reviews"/>
+        <input type="submit" class="btn btn-primary my-2 my-sm-0" name="list" value="Browse reviews for this book"/>
+        {% if current_user.admin %}
+        <input type="submit" class="btn btn-danger my-2 my-sm-0" name="delete" value="Delete book"/>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <input type="submit" class="btn btn-success my-2 my-sm-0" name="update" value="Update data"/>
+        <input type="submit" class="btn btn-success my-2 my-sm-0" name="mark" value="Mark this book as read"/>
+        {% endif %}
       </form> 
     </td>
   </div>

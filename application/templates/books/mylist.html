@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1 class="text-center">Your personal book list</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      This list contains all the books you have marked as read. If you added the book to the public list, the system assumes you have also read it.
+    </h6>
+    <h6 class="text-center">
+      Here you can pick any book from the list and give it a review for everyone to see.
+    </h6>
+  </div>
+</div>
+{% for book in books %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ book.name}}
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      Author: {{ book.author }}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Published: {{ book.publication_year}}
+    </h6>
+    <td>
+      <form method="POST" action="{{ url_for('books_contact', book_id=book.id) }}">
+        <input type="submit" class="btn btn-success my-2 my-sm-0" name="review" value="Give a review"/>
+        <input type="submit" class="btn btn-danger my-2 my-sm-0" name="privatedelete" value="Delete book from your list"/>
+      </form> 
+    </td>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

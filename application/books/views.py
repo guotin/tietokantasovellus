@@ -1,19 +1,26 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_required, current_user
-from application import app, db
+from flask_login import current_user
+from application import app, db, login_required
 
 from application.books.models import Book
-from application.books.forms import BookForm, UpdateForm
-from application.auth.models import AccountBook
+from application.books.forms import BookForm
+from application.auth.models import Account, AccountBook
 from application.reviews.models import Review
 from application.reviews.forms import ReviewForm
 
 @app.route("/books", methods=["GET"])
-def books_index():
+def books_index():  
     return render_template("books/list.html", books = Book.query.all())
+
+@app.route("/books/mylist", methods=["GET"])
+@login_required(role="ANY")
+def books_personal_list():
+       
+    book_list = Account.find_users_books(current_user.id)                     
+    return render_template("books/mylist.html", books = book_list)
                            
 @app.route("/books/new/")
-@login_required
+@login_required(role="ANY")
 def books_form():
     return render_template("books/new.html", form = BookForm())
 
@@ -27,15 +34,45 @@ def books_contact(book_id):
         return reviews_create(book_id)
     elif "list" in request.form:
         return reviews_list(book_id)
+    elif "mark" in request.form:
+        return books_mark_as_read(book_id)
+    elif "privatedelete" in request.form:
+        return books_delete_from_personal_list(book_id)
     else:
         return redirect(url_for("books_index"))
 
+@app.route("/books/<book_id>/", methods=["GET","POST"])
+@login_required(role="ANY")
+def books_mark_as_read(book_id):
+
+    account_list = Book.find_books_users(book_id)                            
+    for account in account_list:
+        if current_user.username == account.username:
+            return redirect(url_for("books_index"))
+        
+    new_relation = AccountBook(current_user.id, book_id)
+    db.session().add(new_relation)
+    db.session().commit()
+        
+    return redirect(url_for("books_index"))
+
+@app.route("/books/<book_id>/", methods=["GET","POST"])
+@login_required(role="ANY")
+def books_delete_from_personal_list(book_id):
+    
+    primary_key = (current_user.id, book_id)
+    relationship = AccountBook.query.get(primary_key)
+    db.session.delete(relationship)
+    db.session().commit()
+
+    return redirect(url_for("books_personal_list"))
+
 @app.route("/books/update/<book_id>/", methods=["GET", "POST"])
-@login_required
+@login_required(role="ANY")
 def books_update(book_id):
 
     book = Book.query.get(book_id)
-    form = UpdateForm(obj=book)
+    form = BookForm(obj=book)
 
     if form.validate_on_submit():
         form.populate_obj(book)
@@ -44,7 +81,7 @@ def books_update(book_id):
     return render_template("books/update.html", book=book, form=form)
   
 @app.route("/books/<book_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def books_delete(book_id):
     
     book = Book.query.get(book_id)
@@ -55,7 +92,7 @@ def books_delete(book_id):
 
     
 @app.route("/books/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def books_create():
 
     form = BookForm(request.form)
@@ -71,7 +108,7 @@ def books_create():
     db.session().add(book)
     db.session().commit()
     
-    #Add an entry to table "UserBook" with current user id and the new book id
+    #Add an entry to table "AccountBook" with current user id and the new book id
     bookuser = AccountBook(current_user.id, book.id)
     db.session().add(bookuser)
     db.session().commit()
@@ -79,7 +116,7 @@ def books_create():
     return redirect(url_for("books_index"))
 
 @app.route("/reviews/<book_id>", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def reviews_create(book_id):
 
     form = ReviewForm(request.form)
@@ -98,9 +135,10 @@ def reviews_create(book_id):
 
 @app.route("/reviews", methods=["GET"])
 def reviews_list(book_id):
-    bookToShow = Book.query.get(book_id)
-    booksReviews = Review.query.filter_by(book_id=book_id).all()
-    return render_template("reviews/list.html", reviews = booksReviews, book=bookToShow)
+    
+    reviews = Review.find_reviews_for_book(book_id)
+    book = Book.query.get(book_id)  
+    return render_template("reviews/list.html", reviews=reviews, bookname=book.name)
     
     
                 

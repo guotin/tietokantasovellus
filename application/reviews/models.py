@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 
 class Review(db.Model):
@@ -14,3 +15,17 @@ class Review(db.Model):
         self.grade = grade
         self.text = text
 
+    @staticmethod
+    def find_reviews_for_book(book_id):
+        stmt = text("SELECT account.username as username, book.name as bookname, review.grade as grade,"
+                    " review.text as reviewtext FROM review"
+                    " JOIN account ON account.id = review.account_id"
+                    " JOIN book ON book.id = review.book_id"
+                    " WHERE book.id = :bookid ")
+        
+        res = db.engine.execute(stmt, bookid = book_id)
+        response = []
+        for row in res:
+            response.append(row)
+
+        return response

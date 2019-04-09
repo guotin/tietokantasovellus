@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1 class="text-center">Your reviews</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      This list contains all the reviews you have posted
+    </h6>
+  </div>
+</div>
+{% for review in reviews %}
+<div class="card mb-3">
+  <div class="card-header">   
+      Review for: "{{ review.bookname }}"  
+  </div>
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2">
+      Grade: {{ review.grade }}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Review text: 
+    </h6>
+    <a>{{ review.reviewtext }}</a>
+    <td>
+      <form method="POST" action="{{ url_for('reviews_contact', review_id=review.id) }}">
+        <input type="submit" class="btn btn-success my-2 my-sm-0" name="update" value="Update review"/>
+        <input type="submit" class="btn btn-danger my-2 my-sm-0" name="delete" value="Delete review"/>
+      </form> 
+    </td>    
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

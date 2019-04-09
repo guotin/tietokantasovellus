@@ -1,5 +1,5 @@
 from application import db
-
+from sqlalchemy.sql import text
 
 class Book(db.Model):
 
@@ -15,3 +15,18 @@ class Book(db.Model):
         self.name = name
         self.author = author
         self.publication_year = publication_year
+
+    @staticmethod
+    def find_books_users(book_id):
+        stmt = text("SELECT account.username, account.password FROM account"
+                    " JOIN account_book ON account_book.account_id = account.id"
+                    " WHERE account_book.book_id = :bookid ")
+        
+        res = db.engine.execute(stmt, bookid = book_id)
+        response = []
+        for row in res:
+            response.append(row)
+
+        return response
+
+    

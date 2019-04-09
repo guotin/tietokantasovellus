@@ -1,22 +1,21 @@
 
-{% extends "layout.html" %} {% block body %} {% if current_user.is_authenticated
-  %}
+{% extends "layout.html" %} {% block body %} {% if current_user.is_authenticated %}
   <div class="jumbotron">
     <div class="container">
-      <h1>
+      <h1 class="text-center">
         Welcome, {{ current_user.username }}!
       </h1>
-      <p>You can now add books and give reviews!</p>
+      <p class="text-center">You can now add books and give reviews!</p>
     </div>
   </div>
   {% else %}
   <div class="jumbotron">
     <div class="container">
-      <h1>
+      <h1 class="text-center">
           Welcome!
       </h1>
-      <p>You can now view books and their reviews from the public book list</p>
-      <p>Start giving reviews and adding books to the list by logging in</p>
+      <p class="text-center">You can now view books and their reviews from the public book list</p>
+      <p class="text-center">Start giving reviews and adding books to the list by logging in</p>
     </div>
   </div>
   {% endif %} {% endblock %}
