@@ -1,8 +1,14 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Give a book review</h1>
-
+<h1 class="text-center">Give a book review</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Post a new review for the selected book by using the form below.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('reviews_create', book_id=book.id) }}">
   <div class="form-group">
       {{ form.grade.label }}
@@ -28,7 +34,7 @@
   </div>
   <div>
     <input type="submit" class="btn btn-success my-2 my-sm-0" value="Post review"/>
-    <a class="btn btn-danger my-2 my-sm-0" href="/books">Cancel</a>
+    <a class="btn btn-danger my-2 my-sm-0" href="/books/mylist">Cancel</a>
   </div>
 </form>
 {% endblock %}

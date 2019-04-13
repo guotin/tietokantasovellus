@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Update book data</h1>
+<h1 class="text-center">Update book data</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Update selected book data with the form below.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('books_update', book_id=book.id) }}">
   <div class="form-group">
     {{ form.name.label }}
@@ -38,8 +45,8 @@
   </div>
   <div>
     <input type="submit" class="btn btn-success my-2 my-sm-0" value="Update data"/>
-    Go back to the list to see the updated list
     <a class="btn btn-primary my-2 my-sm-0" href="/books">Back to list</a>
+    Go back to the list to see the updated list
   </div>
 </form>
 {% endblock %}

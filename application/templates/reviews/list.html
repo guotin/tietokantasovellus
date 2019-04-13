@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Reviews for "{{ bookname }}"</h1>
+<h1 class="text-center">Reviews for "{{ bookname }}"</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      This list contains all the reviews posted for {{ bookname }}.
+    </h6>
+  </div>
+</div>
 {% for review in reviews %}
 <div class="card mb-3">
   <div class="card-body">
@@ -12,6 +19,13 @@
       {{ review.reviewtext }}
     </h6>
     <footer class="blockquote-footer">Review by {{ review.username }} </footer> 
+    {% if current_user.admin %}
+    <td>
+      <form method="POST" action="{{ url_for('reviews_delete', review_id=review.id) }}">
+        <input type="submit" class="btn btn-danger my-2 my-sm-0" name="delete" value="Delete review"/>
+      </form> 
+    </td>
+    {% endif %}
   </div>
 </div>
 {% endfor %}

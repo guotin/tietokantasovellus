@@ -18,6 +18,10 @@ def books_personal_list():
        
     book_list = Account.find_users_books(current_user.id)                     
     return render_template("books/mylist.html", books = book_list)
+
+@app.route("/books/mostread", methods=["GET"])
+def books_most_read():
+    return render_template("books/mostread.html", books = Book.find_most_read_books())
                            
 @app.route("/books/new/")
 @login_required(role="ANY")
@@ -131,7 +135,7 @@ def reviews_create(book_id):
     db.session().add(review)
     db.session().commit()
 
-    return redirect(url_for("books_index"))
+    return redirect(url_for("books_personal_list"))
 
 @app.route("/reviews", methods=["GET"])
 def reviews_list(book_id):

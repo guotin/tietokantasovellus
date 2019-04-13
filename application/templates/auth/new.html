@@ -1,7 +1,17 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Register</h1>
+<h1 class="text-center">Register a new user</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Please fill the form below to register to our forum.
+    </h6>
+    <h6 class="text-center">
+      Use of important passwords is not advised for security reasons.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('auth_register') }}">
   <div class="form-group">
     {{ form.username.label }}
@@ -27,6 +37,7 @@
   </div>
   <div>
     <input type="submit" class="btn btn-success my-2 my-sm-0" value="Register a new user"/>
+    <a class="btn btn-danger my-2 my-sm-0" href="/">Cancel</a>
     <h5>{{ errorMessage }}</h5>
   </div>
 </form>

@@ -1,7 +1,17 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Add a new book</h1>
+<h1 class="text-center">Add a new book</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Here you can add a book to the public book list.
+    </h6>
+    <h6 class="text-center">
+      Adding a book to the public book list also automatically marks this book as read.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('books_create') }}">
   <div class="form-group">
     {{ form.name.label }}

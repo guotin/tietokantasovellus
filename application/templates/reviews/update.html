@@ -1,8 +1,14 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Update your review</h1>
-
+<h1 class="text-center">Update your review</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Update selected review with the form below.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('reviews_update', review_id=review.id) }}">
   <div class="form-group">
       {{ form.grade.label }}
@@ -28,8 +34,8 @@
   </div>
   <div>
     <input type="submit" class="btn btn-success my-2 my-sm-0" value="Update data"/>
-    Go back to the list to see the updated list
     <a class="btn btn-primary my-2 my-sm-0" href="/reviews/mylist">Back to list</a>
+    Go back to the list to see the updated list
   </div>
 </form>
 {% endblock %}

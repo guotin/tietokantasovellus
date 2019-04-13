@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1 class="text-center">Most read books</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Here you can see the top 5 most read books of this forum.
+    </h6>
+  </div>
+</div>
+{% if books is defined %}
+{% for book in books %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ book.name }}
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      Author: {{ book.author }}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Published: {{ book.publication_year}}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Count of people that have read this book: {{ book.times_read}}
+    </h6>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

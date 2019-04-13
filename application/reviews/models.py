@@ -17,7 +17,7 @@ class Review(db.Model):
 
     @staticmethod
     def find_reviews_for_book(book_id):
-        stmt = text("SELECT account.username as username, book.name as bookname, review.grade as grade,"
+        stmt = text("SELECT account.username as username, book.name as bookname, review.grade as grade, review.id, "
                     " review.text as reviewtext FROM review"
                     " JOIN account ON account.id = review.account_id"
                     " JOIN book ON book.id = review.book_id"

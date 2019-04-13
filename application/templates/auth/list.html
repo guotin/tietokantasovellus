@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Top 5 reviewers</h1>
+<h1 class="text-center">Hall of fame</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      This list contains the top 5 of the most active reviewers of the forum. 
+    </h6>
+  </div>
+</div>
 {% if users is defined %}
 {% for user in users %}
 <div class="card mb-3">

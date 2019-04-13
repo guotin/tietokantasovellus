@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Login</h1>
+<h1 class="text-center">Login</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      Please fill the form below to login.
+    </h6>
+  </div>
+</div>
 <form method="POST" action="{{ url_for('auth_login') }}">
   <div class="form-group">
     {{ form.username.label }}
@@ -12,7 +19,9 @@
     {{ form.password(class="form-control") }}
   </div>
   <div>
-    <input type="submit" class="btn btn-success my-2 my-sm-0" value="Login"/> {{ errorMessage }}
+    <input type="submit" class="btn btn-success my-2 my-sm-0" value="Login"/>
+    <a class="btn btn-danger my-2 my-sm-0" href="/">Cancel</a>
+    <h5>{{ errorMessage }}</h5>
   </div>
 </form>
 {% endblock %}
