@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1 class="text-center">Best graded books</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h6 class="text-center">
+      This list contains the top 5 best graded books of this forum.
+    </h6>
+    <h6 class="text-center">
+      Position on this list is defined as the best relative sum of points.
+    </h6>
+  </div>
+</div>
+{% if books is defined %}
+{% for book in books %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ book.name }}
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      Author: {{ book.author }}
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Published: {{ book.publication_year }}
+    </h6>
+    <h5 class="card-subtitle mb-2 text-center">
+      Review statistics
+    </h5>
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h6>Review count: {{ book.grade_count }}</h6>
+        <h6>Points gotten: {{ book.grade_sum }} / {{ book.grade_count * 5 }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

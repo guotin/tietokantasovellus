@@ -22,6 +22,10 @@ def books_personal_list():
 @app.route("/books/mostread", methods=["GET"])
 def books_most_read():
     return render_template("books/mostread.html", books = Book.find_most_read_books())
+
+@app.route("/books/bestgraded", methods=["GET"])
+def books_best_graded():
+    return render_template("books/bestgraded.html", books = Book.find_best_graded_books())
                            
 @app.route("/books/new/")
 @login_required(role="ANY")
