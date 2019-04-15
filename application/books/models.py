@@ -52,7 +52,7 @@ class Book(db.Model):
                     " (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) AS grade_count"
                     " FROM book"
                     " WHERE (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) > 0"
-                    " ORDER BY (SELECT SUM(review.grade) FROM review WHERE review.book_id = book.id) / (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) DESC"
+                    " ORDER BY (grade_sum / grade_count) DESC"
                     " LIMIT 5")
         
         res = db.engine.execute(stmt)
