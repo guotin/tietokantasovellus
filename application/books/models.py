@@ -34,7 +34,7 @@ class Book(db.Model):
         stmt = text("SELECT DISTINCT book.name, book.author, book.publication_year,"
                     " (SELECT COUNT(id) FROM account JOIN account_book ON account_book.account_id = account.id WHERE account_book.book_id = book.id)"
                     " AS times_read FROM book"
-                    " WHERE times_read > 0"
+                    " WHERE (SELECT COUNT(id) FROM account JOIN account_book ON account_book.account_id = account.id WHERE account_book.book_id = book.id) > 0"
                     " ORDER BY times_read DESC"
                     " LIMIT 5")
         
@@ -51,7 +51,7 @@ class Book(db.Model):
                     " (SELECT SUM(review.grade) FROM review WHERE review.book_id = book.id) AS grade_sum,"
                     " (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) AS grade_count"
                     " FROM book"
-                    " WHERE grade_count > 0"
+                    " WHERE (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) > 0"
                     " ORDER BY grade_sum / grade_count DESC"
                     " LIMIT 5")
         
