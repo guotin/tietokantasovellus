@@ -1,21 +1,22 @@
-
 # Kirja-arvostelut
+
 ## Kuvaus aiheesta 
 
-Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukemiaan kirjoja ja antaa niille arvosteluita. Käyttäjät voivat rekisteröityä palveluun ja lisätä julkiselle listalle uuden kirja, jos he ovat sen lukeneet. Yleiseltä listalta voi myös valita lukemiaan kirjoja, jos joku muu on ne jo ehtinyt lisätä aikaisemmin. Lukemalleen kirjalle voi lisätä arvostelun ja kaikille kirjoille on nähtävissä muiden antamat arvostelut. Arvostelu koostuu arvosanasta 0-5 ja vapaamuotoisesta tekstistä. Sivu osaa näyttää arvosteluiden perusteella tilastoja parhaiten arvostelluista kirjoista ja eniten luetuista kirjoista.
+Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukemiaan kirjoja ja antaa niille arvosteluita. Käyttäjät voivat rekisteröityä palveluun ja lisätä julkiselle listalle uuden kirja, jos he ovat sen lukeneet. Yleiseltä listalta voi myös valita lukemiaan kirjoja, jos joku muu on ne jo ehtinyt lisätä aikaisemmin. Lukemalleen kirjalle voi lisätä arvostelun ja kaikille kirjoille on nähtävissä muiden antamat arvostelut. Arvostelu koostuu arvosanasta 0-5 ja vapaamuotoisesta tekstistä. Sivu osaa näyttää arvosteluiden perusteella tilastoja aktiivisimmista arvostelijoista, parhaiten arvostelluista kirjoista ja eniten luetuista kirjoista.
+
 ## Toiminnot 
 
-* Kirjautuminen ja rekisteröityminen
+* Kirjautuminen ja rekisteröityminen.
 
-* Kirjan lisääminen kirjalistalle
+* Kirjan lisääminen julkiselle kirjalistalle. Pääkäyttäjä voi myös poistaa tältä listalta kirjoja.
 
-* Kirjan ilmoittaminen luetuksi
+* Kirjan siirtäminen omalle listalle (kirjan ilmoittaminen luetuksi) ja sieltä poisto.
 
-* Kirja-arvostelun antaminen ja muokkaus
+* Kirja-arvostelun antaminen, sekä sen muokkaus ja poisto.
 
-* Arvosteluiden tarkasteleminen kirjakohtaisesti
+* Arvosteluiden tarkasteleminen kirjakohtaisesti. Omat arvostelut on myös nähtävissä yhdellä sivulla.
 
-* Yhteenvetokyselyiden tarkastelu (parhaat tai luetuimmat kirjat)
+* Yhteenvetokyselyiden tarkastelu
 
 ## Asennus omalle tietokoneelle
 
