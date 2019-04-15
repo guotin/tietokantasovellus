@@ -49,10 +49,11 @@ class Book(db.Model):
     def find_best_graded_books():
         stmt = text("SELECT DISTINCT book.name, book.author, book.publication_year,"
                     " (SELECT SUM(review.grade) FROM review WHERE review.book_id = book.id) AS grade_sum,"
-                    " (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) AS grade_count"
+                    " (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) AS grade_count,"
+                    " (SELECT SUM(review.grade) / COUNT(review.id) FROM review WHERE review.book_id = book.id) AS grade_order"
                     " FROM book"
                     " WHERE (SELECT COUNT(review.id) FROM review WHERE review.book_id = book.id) > 0"
-                    " ORDER BY (grade_sum / grade_count) DESC"
+                    " ORDER BY grade_order DESC"
                     " LIMIT 5")
         
         res = db.engine.execute(stmt)
