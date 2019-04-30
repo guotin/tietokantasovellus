@@ -18,9 +18,9 @@ Kirja-arvosteluihin tarkoitetulla foorumilla käyttäjät voivat ilmoittaa lukem
 
 * Yhteenvetokyselyiden tarkastelu
 
-## Asennus omalle tietokoneelle
+## Lähdekoodin lataaminen ja sovelluksen asennus
 
-Asennusohjeissa oletetaan, että käytössä on Linux-käyttöjärjestelmä ja Python3 (3.5 tai uudempi) sekä SQlite3. Myös Git-ohjelmistosta on hyötyä projektin kloonaamisessa.
+Asennusohjeissa oletetaan, että käytössä on Linux-käyttöjärjestelmä ja Python3 (3.5 tai uudempi). Myös Git-ohjelmistosta on hyötyä projektin kloonaamisessa.
 
 * Lataa tämä Git-repositorio koneellesi zip-pakettina tai kloonaa se komennolla `git clone https://github.com/guotin/tietokantasovellus`
 
@@ -30,11 +30,53 @@ Asennusohjeissa oletetaan, että käytössä on Linux-käyttöjärjestelmä ja P
 
 * Asenna projektin vaatimat riippuvuudet komennolla `pip install -r requirements.txt`
 
+## Sovelluksen käynnistäminen paikallisesti
+
+Tehtyäsi ylemmän kohdan asennuksen ohjeiden mukaisesti, olet valmis käynnistämään sovelluksen paikallisesti.
+
 * Käynnistä sovellus komennolla `python run.py`
 
 * Sovellus pyörii nyt selaimessasi osoitteessa `localhost:5000`
 
+## Sovelluksen asentaminen omalle Heroku-palvelimelle
+
+Sovellus on mahdollista asentaa toimimaan pilvipalvelussa. Tässä ohjeet projektin asentamiseen omalle Heroku-palvelimelle. Asennuksessa vaaditaan Heroku CLI -ohjelmistoa ja omia Heroku käyttäjätunnuksia.
+
+* Luo uusi Heroku-sovellus. Komentoon syötetään nimi omalle sovellukselle.
+
+  ```
+  heroku create HALUTTU-NIMI
+  ```
+
+* Lisää Herokun tiedot paikalliseen Git-versionhallintaan komennolla
+
+  ```
+  git remote add heroku https://git.heroku.com/HALUTTU-NIMI.git
+  ```
+
+* Lähetä sovellus Herokuun
+
+  ```
+  git add .
+  git commit -m 'Commit message'
+  git push heroku master
+  ```
+* Tee Herokuun tietokannan ympäristömuuttuja ja luo tarvittava tietokanta
+  ```
+  heroku config:set HEROKU=1
+  heroku addons:add heroku-postgresql:hobby-dev
+  ```
+* Uudelleenkäynnistä Heroku-sovellus, jotta muutokset tulevat varmasti voimaan
+  ```
+  heroku restart
+  ```
+* Sovellus pyörii nyt määrittelemälläsi sivulla. Voit selvittää tarkan osoitteen Herokun omilta sivuilta kirjautumalla tunnuksillasi sisään.
+
+
+
 ## Käyttöohjeet ja testitunnukset Herokuun
+
+Sovellukselle on jo olemassa Herokussa pyörivä versio ja sitä pääsee käyttämään siirtymällä siihen alempaa löytyvän linkin avulla.
 
 ### Heroku testitunnukset:
 
@@ -62,4 +104,4 @@ Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
 
 [Tietokantakaavio](https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_chart.png)
 
-[Käyttäjätarinat](https://github.com/guotin/tietokantasovellus/blob/master/documentation/user_stories.md)
+[Käyttäjätarinat ja SQL-kyselyt](https://github.com/guotin/tietokantasovellus/blob/master/documentation/user_stories.md) (englanniksi)
