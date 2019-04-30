@@ -48,7 +48,7 @@ def auth_register():
 
     return redirect(url_for("index"))
 
-@app.route("/auth", methods=["GET"])
+@app.route("/auth/hall_of_fame", methods=["GET"])
 def auth_index():
     return render_template("auth/list.html", users=Account.find_users_with_most_reviews())
 

@@ -30,6 +30,9 @@ def reviews_delete(review_id):
     db.session.delete(review)
     db.session().commit()
 
+    if current_user.admin:
+        return redirect(url_for("books_index"))
+    
     return redirect(url_for("reviews_private_list"))
 
 @app.route("/reviews/update/<review_id>/", methods=["GET","POST"])
