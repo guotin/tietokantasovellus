@@ -102,6 +102,6 @@ Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
 
 [Heroku](https://enigmatic-lake-26343.herokuapp.com/)
 
-[Tietokantakaavio](https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_chart.png)
+[Tietokantakaavio ja CREATE TABLE -lauseet](https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_documentation.md) (englanniksi)
 
 [Käyttäjätarinat ja SQL-kyselyt](https://github.com/guotin/tietokantasovellus/blob/master/documentation/user_stories.md) (englanniksi)
