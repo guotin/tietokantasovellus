@@ -80,7 +80,7 @@ Sovellukselle on jo olemassa Herokussa pyörivä versio ja sitä pääsee käytt
 
 ### Heroku testitunnukset:
 
-Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
+Valmiiksi luodussa Heroku versiossa sinulla on pääsy testitunnuksiin. Admin-käyttäjällä on oikeudet kaikkien kirjojen ja arvosteluiden poistamiseen.
 
 * username: `test`, password: `test`
 
@@ -89,13 +89,27 @@ Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
 
 ### Sovelluksen käyttöohjeet
 
-* Siirry Heroku-linkistä sovellukseen tai asenna ohjelma omalle tietokoneellesi ohjeiden mukaisesti
+* Siirry Heroku-linkistä sovellukseen tai asenna ohjelma omalle tietokoneellesi/Heroku-palvelimellesi ohjeiden mukaisesti
 
-* Voit luoda käyttäjän rekisteröitymällä. Lisäksi Heroku-versiossa sinulla on pääsy testitunnuksiin.
-
-* Paikallisessa versiossa joudut luomaan "admin" tunnuksilla varustetun käyttäjän itse avaamalla sovelluksen tietokannan `books.db` SQlite3:lla ja esimerkiksi syöttämällä komennon `INSERT INTO account (username, password, admin) values ('admin', 'admin', '1');`
+* Voit luoda käyttäjän rekisteröitymällä
 
 * Rekisteröitymisen ja kirjautumisen jälkeen sinulla on pääsy kaikkiin muihin sovelluksen toiminnallisuuksiin 
+
+#### Admin-käyttäjän luominen omaan sovellukseen
+
+Jos haluat käyttää kaikkia toiminnallisuuksia omassa sovelluksessa, joudut luomaan admin-tunnukset.
+
+Tämä tapahtuu paikallisessa versiossa avaamalla paikallisen tietokannan `books.db` SQLite3:lla ja syöttämällä seuraavan komennon:
+
+```
+INSERT INTO account (username, password, admin) values ('admin', 'admin', '1');
+```
+
+Heroku käyttää PostegreSQL:llää ja voit avata tämän komennolla `heroku pg:psql` (asennuksen jälkeen). Nyt voit syöttää taas seuraavan komennon admin-tunnuksien luomiseen:
+
+```
+INSERT INTO account (username, password, admin) values ('admin', 'admin', '1');
+```
 
 
 ## Linkkejä
@@ -105,3 +119,5 @@ Admin-käyttäjällä on oikeudet kirjojen poistamiseen julkiselta listalta.
 [Tietokantakaavio ja CREATE TABLE -lauseet](https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_documentation.md)
 
 [Käyttäjätarinat ja SQL-kyselyt](https://github.com/guotin/tietokantasovellus/blob/master/documentation/user_stories.md) (englanniksi)
+
+[Loppudokumentti](https://github.com/guotin/tietokantasovellus/blob/master/documentation/conclusion.md)
