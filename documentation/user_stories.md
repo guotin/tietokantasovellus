@@ -7,7 +7,7 @@
 | User    | Add a book from the public list to my own list | I can give it a review                   | DONE            |
 | User    | View my own book list                          | I can see which books I've read          | DONE            |
 | User    | Give a specific book a review                  | other users can read my review           | DONE            |
-| User    | View reviews for a book                        | I can see what other's have liked        | DONE            |
+| User    | View reviews for a book                        | I can see what others have liked         | DONE            |
 | User    | View my own reviews                            | I can remember which books I've reviewed | DONE            |
 | User    | Edit my own review                             | I can fix mistakes                       | DONE            |
 | User    | Delete my own review                           | I can undo what I've done                | DONE            |
