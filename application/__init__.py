@@ -77,8 +77,6 @@ def load_user(user_id):
 # create database and two accounts for testing
 try:
     db.create_all()
-    db.engine.execute("INSERT INTO account (id, username, password, admin) VALUES ('1', 'admin', 'admin', '1')")
-    db.engine.execute("INSERT INTO account (id, username, password, admin) VALUES ('2', 'test', 'test', '0')")
 except:
     pass
 
