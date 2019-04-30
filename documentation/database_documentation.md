@@ -1,9 +1,12 @@
-# Database documentation
+# Tietokannan dokumentaatio
 
-## Database chart
+Sovellus käyttää paikallisesti SQLite3-tietokantaa ja pilviversiossa (esim Heroku) PostgreSQL-tietokantaa. Tietokannassa on neljä erillistä taulua, joista yksi on liitostaulu. Tietokanta on normalisoitu eikä toistuvaa tietoa tauluissa ole.  
+
+## Tietokantakaavio
+
 <img src="https://github.com/guotin/tietokantasovellus/blob/master/documentation/database_chart.png">
 
-## SQL commands
+## SQL CREATE TABLE -lauseet
 
 ~~~~sql
 CREATE TABLE book (
