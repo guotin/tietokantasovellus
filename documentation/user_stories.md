@@ -123,7 +123,7 @@ SELECT DISTINCT book.name, book.author, book.publication_year,
   (SELECT COUNT(id) FROM account JOIN account_book ON account_book.account_id = account.id WHERE account_book.book_id = book.id)
   AS times_read FROM book
   WHERE (SELECT COUNT(id) FROM account JOIN account_book ON account_book.account_id = account.id 
-  WHERE account_book.book_id = book.id) > 0"
+  WHERE account_book.book_id = book.id) > 0
   ORDER BY times_read DESC
   LIMIT 5;
 ~~~~
