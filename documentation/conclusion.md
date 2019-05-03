@@ -6,7 +6,7 @@ Projektin kaikki halutut päätoiminnallisuudet valmistuivat aikataulun puitteis
 
 Sain muutamia parannusideoita koodikatselmoinnista ja kurssin viimeisen viikon demotilaisuudesta. Päätin kuitenkin jättää nämä jatkokehitysideoihin, enkä ryhtynyt muuttamaan sovellusta viimeisellä viikolla enää kovinkaan paljon.
 
-* Kirja-arvosteluihin annettava teksti voisi olla pidempi kuin 300-merkkiä
+* Kirja-arvosteluihin annettava teksti voisi olla pidempi kuin 300 merkkiä
 
 * Kirja-arvostelun arvosana voisi olla hiirellä valittavissa pudotusvalikosta
 
