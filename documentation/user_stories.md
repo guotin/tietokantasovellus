@@ -5,6 +5,7 @@
 | User    | Register and login to the site                 | I can give book reviews                  | DONE            |
 | User    | Add a book to the public book list             | others or I can give it a review         | DONE            |
 | User    | Add a book from the public list to my own list | I can give it a review                   | DONE            |
+| User    | Remove a book from my own list                 | I can undo my mistake                    | DONE            |
 | User    | View my own book list                          | I can see which books I've read          | DONE            |
 | User    | Give a specific book a review                  | other users can read my review           | DONE            |
 | User    | View reviews for a book                        | I can see what others have liked         | DONE            |
@@ -49,6 +50,12 @@ INSERT INTO Account_book (account_id, book_id) VALUES (?, ?);
 
 ~~~~sql
 INSERT INTO Account_book (account_id, book_id) VALUES (?, ?);
+~~~~
+
+### Remove a book from my own list
+
+~~~~sql
+DELETE FROM Account_book WHERE account_id = ? AND book_id = ?;
 ~~~~
 
 ### View private book list
