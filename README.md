@@ -76,7 +76,7 @@ Sovellus on mahdollista asentaa toimimaan pilvipalvelussa. Tässä ohjeet projek
 
 Jos haluat käyttää kaikkia toiminnallisuuksia omassa sovelluksessa, joudut luomaan admin-tunnukset.
 
-Tämä tapahtuu paikallisessa versiossa avaamalla paikallisen tietokannan `books.db` SQLite3:lla ja syöttämällä seuraavan komennon:
+Tämä tapahtuu paikallisessa versiossa avaamalla paikallisen tietokannan `/application/books.db` SQLite3:lla ja syöttämällä seuraavan komennon:
 
 ```
 INSERT INTO account (username, password, admin) values ('admin', 'admin', '1');
@@ -107,17 +107,17 @@ Sovellukselle on jo olemassa Herokussa pyörivä demoversio ja sitä pääsee k�
 
 * Julkisen kirjalistan tarkastelu tapahtuu painamalla `Public book list` -painiketta. Julkiselta listalta voit siirtyä tietyn kirjan       arvosteluihin painamalla `Browse reviews for this book`, muokata kirjan tietoja painamalla `Update data` tai merkata kirjan luetuksi     painamalla `Mark this book as read`. Pääkäyttäjä voi lisäksi poistaa täältä tietyn kirjan `Delete book` -painikkeella. Pääkäyttäjän     siirtyessä tarkastelemaan tietyn kirjan arvosteluita, hänellä on valta poistaa kenen tahansa arvostelu `Delete review` -painikkeella.
 
-* Lukemasi kirjat näät siirtymällä omalle kirjalistallesi `Your book list` -painikkeella. Täällä voit antaa arvosteluita kirjalle `Give   a review` -painikkeella tai poistaa kirjan omalta kirjalistaltasi painamalla `Delete book from your list`. 
+* Lukemasi kirjat näet siirtymällä omalle kirjalistallesi `Your book list` -painikkeella. Täällä voit antaa arvosteluita kirjalle `Give   a review` -painikkeella tai poistaa kirjan omalta kirjalistaltasi painamalla `Delete book from your list`. 
 
-* Antamasi kirja-arvostelut näät listattuna painamalla `Your reviews` -painiketta. Täällä voit muokata arvosteluasi painamalla `Update     review` tai poistaa arvostelusi painamalla `Delete review`.
+* Antamasi kirja-arvostelut näet listattuna painamalla `Your reviews` -painiketta. Täällä voit muokata arvosteluasi painamalla `Update     review` tai poistaa arvostelusi painamalla `Delete review`.
 
 * Uuden kirjan lisäys foorumin tietokantaan onnistuu `Add a book` -painikkeella. Kirjan lisääminen sivustolle lisää sen myös omalle       listallesi eli merkkaa sen luetuksi.
 
-* 5 aktiivisinta arvostelijaa näät `Reviewer hall of fame` -painikkeella.
+* 5 aktiivisinta arvostelijaa näet `Reviewer hall of fame` -painikkeella.
 
-* 5 luetuinta kirjaa näät `Most read books` -painikkeella.
+* 5 luetuinta kirjaa näet `Most read books` -painikkeella.
 
-* 5 parhaiten arvosteltua kirjaa näät `Best graded book` -painikkeella.
+* 5 parhaiten arvosteltua kirjaa näet `Best graded book` -painikkeella.
 
 
 
